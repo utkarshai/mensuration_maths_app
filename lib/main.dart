@@ -30,117 +30,49 @@ class Home extends StatelessWidget {
         elevation: 4.0,
         title: Text("chosse your shape"),
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            RaisedButton(
-              onPressed:  ()=>  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => Cone())),
-              color: Colors.lightGreen,
-              child: Row(
-                children: <Widget>[
-                  Image.network(
-                    "https://dr282zn36sxxg.cloudfront.net/datastreams/f-d%3Aa7716dacae5a9e96bcfa171bbea8d39bd336482f0f364add89234f48%2BIMAGE_TINY%2BIMAGE_TINY.1",
-                    height: 30,
-                    width: 30,
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text("cone's measurement"),
-                ],
-              ),
-            ),
-            RaisedButton(
-              color: Colors.amberAccent,
-              onPressed:  ()=>  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => Sphere())),
-              child: Row(
-                children: <Widget>[
-                  Image.network(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCsi2AQ8Uf4bcakkxvix8Un6DZ6-T1jE1TJWF58W1_wlsLPNvdeg",
-                    height: 30,
-                    width: 30,
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text("sphere's measurement"),
-                ],
-              ),
-            ),
-            RaisedButton(
-              onPressed:  ()=>  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => Cuboid())),
-              color: Colors.lightGreen,
-              child: Row(
-                children: <Widget>[
-                  Image.network(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5sLzT_AxFpFaunJOhOcKndH-C-lzKu3sNUCE8J-bNiDhKC6bg6Q",
-                    height: 30,
-                    width: 30,
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text("cuboid's measurement"),
-                ],
-              ),
-            ),
-            RaisedButton(
-              onPressed: ()=>  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => Cube())),
-              color: Colors.amberAccent,
-              child: Row(
-                children: <Widget>[
-                  Image.network(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQevHtCTwN6YG0VWKJUn0kR3189IY-cEui1B_6T9u9dtZrMtFVs5Q",
-                    height: 30,
-                    width: 30,
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text("cube's measurement"),
-                ],
-              ),
-            ),
-            RaisedButton(
-              onPressed:  ()=>  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => Cylinder())),
-              color: Colors.lightGreen,
-              child: Row(
-                children: <Widget>[
-                  Image.network(
-                    "https://previews.123rf.com/images/get4net/get4net1711/get4net171101038/90570757-cylinder-shape-rod.jpg",
-                    height: 30,
-                    width: 30,
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text("cylinder's measurement"),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Text(
-               'make your choice \n               :)',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-            ),
-            
-          ], 
-        ),
-      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        childAspectRatio: 1.0,
+        padding: const EdgeInsets.all(4.0),
+        mainAxisSpacing: 15.0,
+        crossAxisSpacing: 15.0,
+        children: <String>[
+'cone',
+'cube',
+'cuboid',
+'cylinder',
+'sphere',
+'choose one of them'
+        ].map((String a){
+return RaisedButton(
+  shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+  child: Column(
+   children: <Widget>[
+a=="cone"?
+Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXKDQDGTJVfG8oDPO0TArywaqCLvOjxZ7wIVH5hs13pJwZ1__lww", height: 100.0, width: 100.0,):
+(a=='cuboid'?Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXFV4wH7wlM7-TQOw4lEfJ3W5W5LykegjXQbc_8TUrxW-2F48_bA", height: 100.0, width: 100.0,)
+:(a=="cube"?Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4jr_iv93qUH6OPYdJc4ieWbNk_9d-Nh1pJLya5rUktL4BGLsmlA", height: 100.0, width: 100.0,)
+:(a=="cylinder"?Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmD1xB7-CY_YAhoWeZCrx4WMIOpK4QVuMR4peXxvxECKs4LYFl",height: 100.0, width: 100.0,)
+:(a=="sphere"?Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKxom5DLNKfSVyF95lOUEUQgAoHVPrXNIowml469IZbrmqhIXL", height: 100.0, width: 100.0,):Container(
+  child: Column(children: <Widget>[
+    SizedBox(
+      height: 50.0,
+    ),
+     Text(":)",style: TextStyle(fontSize: 30.0, color: Colors.black),),
+  ],
+   
+)))))),
+     Text(a, style: TextStyle(color: Colors.black),)
+   ],
+), 
+color: Colors.white,
+onPressed:()=>  Navigator.push(context, MaterialPageRoute(builder: (context)=> 
+a=="cone"?
+Cone():
+(a=='cuboid'?Cuboid():(a=="cube"?Cube():(a=="cylinder"?Cylinder():Sphere())))
+)),);
+        }).toList(),
+      )
     );
-  }
-
-  
+  }  
 }
